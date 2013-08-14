@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load media_extras %}
+
+{% block content %}
+
+<h1>{{ gallery.title }}</h1>
+
+<ul class="clearing-thumbs" data-clearing>
+{% for img in gallery.media.all %}
+    <li><a class="th radius" href="{{ MEDIA_URL }}{% image_cache_url img width=600 height=400 %}">
+    	<img src="{{ MEDIA_URL }}{% image_cache_url img width=150 height=150 %}" />
+   		</a>
+   	</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
+
+{% block script %}
+	<script src='{{ STATIC_URL }}js/ckeditor/ckeditor.js'></script>
+{% endblock %}
